@@ -1,12 +1,16 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/interactive-supports-focus */
+import React, { useState } from 'react';
 import {
   FaCalendarAlt, FaInbox, FaCalendar, FaChevronDown,
 } from 'react-icons/fa';
+import { Projects } from '../components/Projects';
 
-export const Sidebar = () => (
-  <aside>
-    <div className="sidebar-top" data-testid="sidebar">
-      <ul>
+export const Sidebar = () => {
+  const [showProjects, setShowProjects] = useState(false);
+
+  return (
+    <aside className="sidebar" data-testid="sidebar">
+      <ul className="sidebar__generic">
         <li>
           <span>
             <FaInbox />
@@ -32,13 +36,22 @@ export const Sidebar = () => (
           </span>
         </li>
       </ul>
-    </div>
-    <div className="sidebar-middle">
-      <span>
-        <FaChevronDown />
-      </span>
-      <h3>Projects</h3>
-    </div>
-    <h4>Add Projects comes here!!!</h4>
-  </aside>
-);
+
+      <div
+        role="button"
+        className="sidebar__middle"
+        onClick={() => (setShowProjects(!showProjects))}
+        onKeyPress={() => (setShowProjects(!showProjects))}
+      >
+        <span>
+          <FaChevronDown />
+        </span>
+        <h2>Projects</h2>
+      </div>
+
+      <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
+
+    </aside>
+
+  );
+};

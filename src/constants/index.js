@@ -1,14 +1,14 @@
 export const collatedTasks = [
   {
-    key: 'Today',
+    key: 'TODAY',
     name: 'Today',
   },
   {
-    key: 'Incoming',
-    name: 'Incoming',
+    key: 'NEXT_7',
+    name: 'Next 7',
   },
   {
-    key: 'Inbox',
+    key: 'INBOX',
     name: 'Inbox',
   },
 ];

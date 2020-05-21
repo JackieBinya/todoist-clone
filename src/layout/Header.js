@@ -1,20 +1,22 @@
 import React from 'react';
-import { FaPizzaSlice, FaPlus } from 'react-icons/fa';
+import { FaPizzaSlice } from 'react-icons/fa';
 
 export const Header = () => (
-  <header>
-    <div className="logo">
-      <img src="/images/todoist.png" alt="Todoist Logo" />
-    </div>
-    <div>
-      <ul className="settings">
-        <li>
-          <FaPlus />
-        </li>
-        <li>
-          <FaPizzaSlice />
-        </li>
-      </ul>
-    </div>
+  <header className="header" data-testid="header">
+    <nav>
+      <div className="logo">
+        <img src="/images/todoist.png" alt="Todoist Logo" />
+      </div>
+      <div className="settings">
+        <ul>
+          <li className="settings__add">
+            +
+          </li>
+          <li className="settings__darkmode">
+            <FaPizzaSlice />
+          </li>
+        </ul>
+      </div>
+    </nav>
   </header>
 );

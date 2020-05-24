@@ -71,8 +71,9 @@ const useProjects = () => {
           id: doc.id,
         }));
         // Only update state when new project is added?????
-        if (JSON.stringify(allProjects) !== projects) {
-          setProjects([...allProjects]);
+        if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
+          // setProjects([...allProjects]);
+          setProjects(allProjects);
         }
       });
   }, [projects]);

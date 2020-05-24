@@ -4,12 +4,13 @@ import {
   FaCalendarAlt, FaInbox, FaCalendar, FaChevronDown,
 } from 'react-icons/fa';
 import { Projects } from '../components/Projects';
+import { AddProject } from '../components/AddProject';
 
 export const Sidebar = () => {
   const [showProjects, setShowProjects] = useState(false);
 
   return (
-    <aside className="sidebar" data-testid="sidebar">
+    <div className="sidebar" data-testid="sidebar">
       <ul className="sidebar__generic">
         <li>
           <span>
@@ -51,7 +52,9 @@ export const Sidebar = () => {
 
       <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
 
-    </aside>
+      { showProjects && <AddProject /> }
+
+    </div>
 
   );
 };

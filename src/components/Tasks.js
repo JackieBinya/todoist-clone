@@ -1,13 +1,30 @@
-import React from 'react';
-import { useTasks, useProjects } from '../hooks';
+import React, { useEffect } from 'react';
+import { useTasks } from '../hooks';
 import { Checkbox } from './Checkbox';
+import { useSelectedProjectValue, useProjectsValue } from '../context';
+import { collatedTasks } from '../constants';
+import { collatedTasksExist, getTitle, getCollatedTitle } from '../helpers';
 
 export const Tasks = () => {
   // eslint-disable-next-line no-console
-  const { tasks } = useTasks('1');
-  const { projects } = useProjects();
+  const { selectedProject } = useSelectedProjectValue();
+  const { projects } = useProjectsValue();
+  const { tasks } = useTasks(selectedProject);
 
-  console.log(projects);
+  let projectName = '';
+
+  if (projects && selectedProject && !collatedTasksExist(selectedProject)) {
+    const project = getTitle(projects, selectedProject);
+    projectName = project.name;
+  }
+
+  if (collatedTasksExist(selectedProject) && selectedProject) {
+    projectName = getCollatedTitle(collatedTasks, selectedProject).name;
+  }
+
+  useEffect(() => {
+    document.title = `${projectName}: Todoist`;
+  }); 
 
   return (
     <div className="tasks">
@@ -15,7 +32,7 @@ export const Tasks = () => {
         {tasks.map((task) => (
           <li key={`${task.id}`}>
             <Checkbox id="{task.id}" />
-            <span className="">{tasks.name}</span>
+            <span>{task.name}</span>
           </li>
         ))}
       </ul>

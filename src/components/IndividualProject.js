@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
@@ -37,26 +38,26 @@ export const IndividualProject = ({ project }) => {
         <FaTrashAlt />
       </span>
       {showConfirm && (
-      <div
-        className="project-delete-modal"
-      >
-        <div className="project-delete-modal__inner">
-          <p>Are you sure you want to delete this project?</p>
-          <button
-            type="button"
-            onClick={() => deleteProject(project.id)}
-          >
-            Delete
-          </button>
-          <span
-            role="button"
-            onClick={() => setShowConfirm(!showConfirm)}
-            onKeyPress={() => setShowConfirm(!showConfirm)}
-          >
-            Cancel
-          </span>
+        <div
+          className="project-delete-modal"
+        >
+          <div className="project-delete-modal__inner">
+            <p>Are you sure you want to delete this project?</p>
+            <button
+              type="button"
+              onClick={() => deleteProject(project.id)}
+            >
+              Delete
+            </button>
+            <span
+              role="button"
+              onClick={() => setShowConfirm(!showConfirm)}
+              onKeyPress={() => setShowConfirm(!showConfirm)}
+            >
+              Cancel
+            </span>
+          </div>
         </div>
-      </div>
       )}
     </>
   );

@@ -4,11 +4,13 @@ import { Checkbox } from './Checkbox';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
 import { collatedTasks } from '../constants';
 import { collatedTasksExist, getTitle, getCollatedTitle } from '../helpers';
+import { AddTask } from './AddTask';
 
 export const Tasks = () => {
   // eslint-disable-next-line no-console
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
+  console.log(selectedProject)
   const { tasks } = useTasks(selectedProject);
 
   let projectName = '';
@@ -24,7 +26,7 @@ export const Tasks = () => {
 
   useEffect(() => {
     document.title = `${projectName}: Todoist`;
-  }); 
+  });
 
   return (
     <div className="tasks">
@@ -36,6 +38,7 @@ export const Tasks = () => {
           </li>
         ))}
       </ul>
+      <AddTask />
     </div>
   );
 };

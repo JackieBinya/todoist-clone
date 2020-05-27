@@ -20,7 +20,9 @@ export const Header = ({ darkMode, setDarkMode }) => {
             </li>
             <li
               className="settings__darkmode"
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={() => {
+                setDarkMode(!darkMode);
+              }}
             >
               <FaPizzaSlice />
             </li>

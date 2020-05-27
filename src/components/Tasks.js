@@ -10,7 +10,6 @@ export const Tasks = () => {
   // eslint-disable-next-line no-console
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
-  console.log(selectedProject)
   const { tasks } = useTasks(selectedProject);
 
   let projectName = '';

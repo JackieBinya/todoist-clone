@@ -1,12 +1,25 @@
 import React from 'react';
+import { firebase } from '../firebase';
 
-export const Checkbox = () => (
-  <div
-    className="checkbox-holder"
-    data-testid="checkbox-action"
-    role="button"
-    tabIndex={0}
-  >
-    <span className="checkbox" />
-  </div>
-);
+export const Checkbox = ({ id }) => {
+  const archiveTask = () => {
+    firebase
+      .firestore()
+      .doc(id)
+      .update({
+        archived: true,
+      });
+  };
+  return (
+    <div
+      className="checkbox-holder"
+      data-testid="checkbox-action"
+      onClick={() => archiveTask()}
+      onKeyDown={() => archiveTask()}
+      role="button"
+      tabIndex={0}
+    >
+      <span className="checkbox" />
+    </div>
+  );
+};

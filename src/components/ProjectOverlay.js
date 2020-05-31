@@ -18,20 +18,23 @@ export const ProjectOverlay = ({
         <ul className="project-overlay__list">
           {projects.map((project) => (
             <li
-              role="button"
-              tabIndex={0}
               key={project.id}
               data-test-id="project-overlay-action"
-              onClick={() => {
-                setProject(project.projectId);
-                setShowProjectOverlay(false);
-              }}
-              onKeyDown={() => {
-                setProject(project.projectId);
-                setShowProjectOverlay(false);
-              }}
             >
-              {project.name}
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => {
+                  setProject(project.projectId);
+                  setShowProjectOverlay(false);
+                }}
+                onKeyDown={() => {
+                  setProject(project.projectId);
+                  setShowProjectOverlay(false);
+                }}
+              >
+                {project.name}
+              </div>
             </li>
           ))}
         </ul>

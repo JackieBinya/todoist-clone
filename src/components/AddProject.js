@@ -6,7 +6,7 @@ import { firebase } from '../firebase';
 export const AddProject = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow);
   const [projectName, setProjectName] = useState('');
-  const { setProjects } = useProjectsValue();
+  const {projects, setProjects } = useProjectsValue();
 
   const projectId = generatePushId();
 
@@ -20,7 +20,7 @@ export const AddProject = ({ shouldShow = false }) => {
       userId: '1',
     })
     .then(() => {
-      setProjects([]);
+      setProjects([...projects]);
       setProjectName('');
       setShow(false);
     });
@@ -52,7 +52,7 @@ export const AddProject = ({ shouldShow = false }) => {
               onClick={() => setShow(false)}
               onKeyDown={() => setShow(false)}
               role="button"
-              tabIndex="0"
+              tabIndex={0}
             >
               Cancel
             </span>
@@ -66,7 +66,7 @@ export const AddProject = ({ shouldShow = false }) => {
         onClick={() => setShow(!show)}
         onKeyDown={() => setShow(!show)}
         role="button"
-        tabIndex="0"
+        tabIndex={0}
       >
         Add Project
       </span>

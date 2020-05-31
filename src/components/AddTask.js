@@ -5,17 +5,28 @@ import { firebase } from '../firebase';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
 import { ProjectOverlay } from './ProjectOverlay';
 import { TaskDate } from './TaskDate';
+/*
+showAddTaskMain={false}
+        shouldShowMain={shouldShowMain}
+        setShouldShowMain={setShouldShowMain}
+        showQuickAddTask={showQuickAddTask}
+        setShowQuickAddTask={setShowQuickAddTask}
 
+         showAddTaskMain = true,
+  showShouldMain = false,
+  showQuickAddTask,
+  setShowQuickAddTask,
+ */
 export const AddTask = ({
   showAddTaskMain = true,
-  showShouldMain = false,
+  shouldShowMain = false,
   showQuickAddTask,
   setShowQuickAddTask,
 }) => {
   const [task, setTask] = useState('');
   const [taskDate, setTaskDate] = useState('');
   const [project, setProject] = useState('');
-  const [showMain, setShowMain] = useState(showShouldMain);
+  const [showMain, setShowMain] = useState(shouldShowMain);
   const [showProjectOverlay, setShowProjectOverlay] = useState(false);
   const [showTaskDate, setShowTaskDate] = useState(false);
 
@@ -82,7 +93,7 @@ export const AddTask = ({
                 <span
                   role="button"
                   tabIndex={0}
-                  className="add-task__cancel"
+                  className="add-task__cancel-x"
                   data-testid="add-task-cancel"
                   onClick={() => {
                     setShowMain(false);
@@ -119,7 +130,7 @@ export const AddTask = ({
           />
           <button
             type="button"
-            onClick={() => addTask()}
+            onClick={() => (showQuickAddTask ? (addTask() && setShowQuickAddTask(false)) : addTask())}
             className="add-task__submit"
             data-testid="add-task"
           >

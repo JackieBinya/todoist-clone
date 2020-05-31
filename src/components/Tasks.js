@@ -7,7 +7,6 @@ import { collatedTasksExist, getTitle, getCollatedTitle } from '../helpers';
 import { AddTask } from './AddTask';
 
 export const Tasks = () => {
-  // eslint-disable-next-line no-console
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
